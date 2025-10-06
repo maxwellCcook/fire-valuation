@@ -1,4 +1,5 @@
 
+import glob, os
 import requests
 import geopandas as gpd
 import pandas as pd
@@ -9,6 +10,22 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from tqdm.notebook import tqdm
 from shapely.geometry import shape
+
+
+def list_files(path, ext, recursive=True):
+    """
+    Find file names recursively for a given string match
+
+    :param path: the directory to search
+    :param ext: the file extension to return
+    :param recursive: search recursively or not, default to True
+    :return:
+    """
+    if recursive is True:
+        return glob.glob(os.path.join(path, '**', '*{}'.format(ext)), recursive=recursive)
+    else:
+        return glob.glob(os.path.join(path, '*{}'.format(ext)), recursive=recursive)
+
 
 def fetch_nsi_fips(fips_list, timeout=120):
     nsi_results = []
