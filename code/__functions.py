@@ -10,6 +10,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from tqdm.notebook import tqdm
 from shapely.geometry import shape
+from sklearn.metrics import r2_score
 
 
 def list_files(path, ext, recursive=True):
